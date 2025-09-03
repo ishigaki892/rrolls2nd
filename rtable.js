@@ -699,6 +699,7 @@ function processGacha(seed, rounds, arr, valueFn, nameList, recordList, densList
     }
     let gt = gatya;
     if (kakut !== 0) gt = gatya + "g" + kakut;
+    gt = url.searchParams.get("gt");
     if (kaburi) k_seed_link = `<br>${label}${i + targetseedNm})<a href="${baseUrl}?gt=${targetSeed}&type=${gt}">${kaburi}</a>`;
     if (name) n_seed_link = `<a href="${baseUrl}?seed=${seed}&gt=${gt}">${name}</a>`;
     nameList.push(n_seed_link + k_seed_link);
@@ -775,6 +776,7 @@ function getkk(seed,arr,RLa,RLb,nameList,labelOffsets,gatya,rounds,ifkaburi,kaku
     }
     let gt = gatya;
     if (kakut !== 0) gt = gatya + "g" + kakut;
+    gt = url.searchParams.get("gt");
     if (kaburi) k_seed_link = `<br>${label}${i + targetseedNm})<a href="${baseUrl}?seed=${targetSeed}&gt=${gt}">${kaburi}</a>`;
     if (name) n_seed_link = `<a href="${baseUrl}?seed=${seed}&gt=${gt}">${name}</a>`;
     let link = n_seed_link + k_seed_link;
@@ -862,22 +864,18 @@ function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifka
     const k7 = results[12];
     const k11 = results[20];
     const k15 = results[28];
-
-    // 次ループ用の seed
     seed = r2;
 
     let kname, seedlink = "", grr = 0 ,grrk = 0, kkname;
     let ks = kakut === 7 ? k7 : kakut === 11 ? k11 : k15;
     let kks = kakut === 7 ? k7 : kakut === 11 ? k11 : k15;
-
-    // ★ nextsd と sdif を初期化
     let nextsd = 0, nextsdk = 0;
     let sdif, sdifk;
-    let onkkks = false; // 初回被り検出フラグ
+    let onkkks = false;
     let startichi = i;
     if (labelOffsets.add === 2) {
       sdif = 1;
-      let Ads = true; // true = ifkaburia, false = ifkaburib
+      let Ads = true;
       for (let j = 0; j < kakut - 1; j++) {
         const source = Ads ? ifkaburia : ifkaburib;
         const kabu = source[startichi];
@@ -887,7 +885,7 @@ function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifka
 
         if (kabu !== 0) {
           sdif += kabu;
-          Ads = (kabu % 2 === 0); // 偶数 → ifkaburia, 奇数 → ifkaburib
+          Ads = (kabu % 2 === 0);
           startichi += kabu;
         } else {
           startichi += 1;
@@ -895,8 +893,7 @@ function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifka
       }
     } else if (labelOffsets.add === 3) {
       sdif = 2;
-      // デフォルト = ifkaburib
-      let Ads = false; // true = ifkaburia, false = ifkaburib
+      let Ads = false;
       for (let j = 0; j < kakut - 1; j++) {
         const source = Ads ? ifkaburia : ifkaburib;
         const kabu = source[startichi];
@@ -907,7 +904,6 @@ function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifka
         if (kabu !== 0) {
           sdif += kabu;
           Ads = (kabu % 2 === 1); 
-          // add=3 の場合は奇数で ifkaburia に切り替え、偶数なら ifkaburib 継続
           startichi += kabu;
         } else {
           startichi += 1;
@@ -918,7 +914,7 @@ function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifka
       if (labelOffsets.add === 2) {
       sdifk = 1;
       startichi = i + 1;
-      let Ads = true; // true = ifkaburia, false = ifkaburib
+      let Ads = true;
       for (let j = 0; j < kakut - 1; j++) {
         const source = Ads ? ifkaburia : ifkaburib;
         const kabu = source[startichi];
@@ -927,7 +923,7 @@ function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifka
 
         if (kabu !== 0) {
           sdif += kabu;
-          Ads = (kabu % 2 === 0); // 偶数 → ifkaburia, 奇数 → ifkaburib
+          Ads = (kabu % 2 === 0);
           startichi += kabu;
         } else {
           startichi += 1;
@@ -935,9 +931,8 @@ function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifka
       }
       } else if (labelOffsets.add === 3) {
         sdifk = 2;
-        // デフォルト = ifkaburib
         startichi = i + 1;
-        let Ads = false; // true = ifkaburia, false = ifkaburib
+        let Ads = false; 
         for (let j = 0; j < kakut - 1; j++) {
           const source = Ads ? ifkaburia : ifkaburib;
           const kabu = source[startichi];
@@ -947,7 +942,6 @@ function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifka
           if (kabu !== 0) {
             sdifk += kabu;
             Ads = (kabu % 2 === 1); 
-            // add=3 の場合は奇数で ifkaburia に切り替え、偶数なら ifkaburib 継続
             startichi += kabu;
           } else {
             startichi += 1;
@@ -1000,9 +994,10 @@ function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifka
           labelk = labelOffsets.ifkabu;
         }
       }
-      seedlink += `${labelk}${i + grrk})<a href="${baseUrl}?seed=${kks}&gt=${gtk}">${kkname}</a><br>`;
+      gtk = url.searchParams.get("gt");
+      seedlink += `${labelk}${i + grrk})<a href="${baseUrl}?seed=${kks}&gt=${gtk}">${kkname}</a>`;
     }
-
+    gt = url.searchParams.get("gt");
     seedlink += `${label}${i + grr})<a href="${baseUrl}?seed=${ks}&gt=${gt}">${kname}</a>`;
     recordList.push(seedlink);
   }
@@ -1032,8 +1027,8 @@ function setaddallsub() {
   allsublist.innerHTML = "";
   Object.keys(gatyaData).forEach(key => {
     const option = document.createElement("option");
-    const numKey = Number(key);  // 数値化
-    option.value = numKey;       // value に数値キー
+    const numKey = Number(key);
+    option.value = numKey;      
     option.textContent = `${numKey} : ${gatyaData[key].name}`;
     allsublist.appendChild(option);
   })
@@ -1064,22 +1059,17 @@ function getaddtext() {
 
   for (const key in gatyaData) {
     const item = gatyaData[key];
-
-    // 入力なし → 全部出す
     if (addsubfilter === "") {
       const option = document.createElement("option");
       option.value = Number(key);
       option.textContent = `${key} : ${item.name}`;
       addsubselect.appendChild(option);
     }
-    // 入力あり → 部分一致
     else if (!hitFound && (key.includes(addsubfilter) || item.name.includes(addsubfilter))) {
       const option = document.createElement("option");
       option.value = Number(key);
       option.textContent = `${key} : ${item.name}`;
       addsubselect.appendChild(option);
-
-      // 最初の1件だけ出す
       hitFound = true;
     }
   }
@@ -1088,21 +1078,16 @@ function getaddtext() {
 document.addEventListener("DOMContentLoaded", () => {
   allsub.innerHTML = `設定されているガチャ:`;
   const tableBody = document.getElementById("gatya_table");
-
-  // --- seed コピー機能 ---
   copyButton.addEventListener("click", () => {
     navigator.clipboard.writeText(url.searchParams.get("seed"))
       .then(() => alert("コピーしました！"))
       .catch(() => alert("コピーに失敗しました。ブラウザ設定をご確認ください。"));
   });
-
-  // --- URL パラメータ取得 ---
   let seed = url.searchParams.get("seed") || 1;
   const gts = url.searchParams.get("gt") || "";
 
   const results = gts.includes("s")
     ? gts.split("s").map(part => {
-        // a で分割して addf を取り出す
         const [beforeA, afterA] = part.split("a");
         const [g, k] = beforeA.split("g");
         return {
@@ -1128,9 +1113,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   getfindnext(getGatyaInfo(results[0].gatya).gt_chara);
   setaddallsub();
-
-  // --- ヘッダー描画 ---
-// --- ヘッダー描画 ---
   function renderHeader(results, tableBody) {
     const KakutCount = results.filter(r => r.kakut !== 0).length;
     const totalColSpan = results.length + KakutCount;
@@ -1187,10 +1169,8 @@ document.addEventListener("DOMContentLoaded", () => {
     infoRow += `</tr>`;
     tableBody.innerHTML += infoRow;
   }
-
   renderHeader(results, tableBody);
 
-  // --- サブ削除ボタン処理（イベントデリゲーション） ---
   document.addEventListener("click", e => {
     if (e.target.classList.contains("remove-sub")) {
       const id = e.target.dataset.id;
@@ -1366,15 +1346,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderAllSub() {
     const span = document.getElementById("allsub");
     const list = readAddAll();
-
-    // プルダウンから value → 表示名 を取得
     const sel = document.getElementById("allsubactivelist");
     const nameByVal = {};
     for (const opt of sel.options) {
       nameByVal[opt.value] = opt.textContent;
     }
-
-    // 一旦クリア
     span.innerHTML = "";
 
     list.forEach(id => {
@@ -1382,13 +1358,9 @@ document.addEventListener("DOMContentLoaded", () => {
       wrapper.style.display = "flex";
       wrapper.style.alignItems = "center";
       wrapper.style.marginBottom = "4px";
-
-      // 名前部分
       const label = document.createElement("span");
       label.textContent = nameByVal[String(id)] || id;
       label.style.marginRight = "8px";
-
-      // ✕ボタン
       const btn = document.createElement("button");
       btn.textContent = "✕";
       btn.style.cursor = "pointer";
@@ -1398,10 +1370,9 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.title = "削除";
 
       btn.addEventListener("click", () => {
-        // 対象を削除して保存し直し
         const newList = list.filter(x => x !== id);
         writeAddAll(newList);
-        renderAllSub(); // 再描画
+        renderAllSub();
       });
 
       wrapper.appendChild(label);
