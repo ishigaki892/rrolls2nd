@@ -221,3 +221,24 @@ html, body {
 .min80 {
   min-width: 80px;
 }
+
+/* スマホ用テーブル改善 */
+@media (max-width: 750px) {
+  .table_style_rseed {
+    display: block;
+    width: 100%;
+    overflow-x: auto;  /* 横スクロール対応 */
+    -webkit-overflow-scrolling: touch; /* iOS滑らかスクロール */
+  }
+
+  .table_style_rseed th,
+  .table_style_rseed td {
+    font-size: 12px;     /* 読みやすいサイズ */
+    padding: 6px;        /* タップしやすく */
+    white-space: nowrap; /* 折り返さずスクロールにする */
+  }
+
+  body {
+    font-size: 14px; /* 全体を少し大きめに */
+  }
+}
