@@ -700,7 +700,7 @@ function processGacha(seed, rounds, arr, valueFn, nameList, recordList, densList
     let gt = gatya;
     if (kakut !== 0) gt = gatya + "g" + kakut;
     gt = url.searchParams.get("gt");
-    if (kaburi) k_seed_link = `<br>${label}${i + targetseedNm})<a href="${baseUrl}?gt=${targetSeed}&type=${gt}">${kaburi}</a>`;
+    if (kaburi) k_seed_link = `<br>${label}${i + targetseedNm})<a href="${baseUrl}?gt=${gt}">${kaburi}</a>`;
     if (name) n_seed_link = `<a href="${baseUrl}?seed=${seed}&gt=${gt}">${name}</a>`;
     nameList.push(n_seed_link + k_seed_link);
     recordList.push(overlapCount,kaburi,name,n_seed_link,k_seed_link);
