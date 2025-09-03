@@ -1,0 +1,224 @@
+@charset "utf-8";
+html,body {
+  -webkit-text-size-adjust: none;
+  height: 100%; 
+}
+
+body,div,img,form,h2,a{
+	margin:0;
+	padding:0;
+}
+
+img{
+	border:none;
+	max-width: 100%;
+    height: auto;
+}
+
+body{
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+	line-height:1.8;
+	font-size:10px;
+	text-align:center;
+	background: url(../img/bg.png);
+}
+
+
+
+article {
+  margin: 0;
+  padding: 0;
+	text-align: left;
+	margin: 0 auto;
+	min-height: 100%;
+	background: var(--color-article-bc, #FFF);
+}
+
+@media only screen and (min-width: 750px) { article{ max-width: 740px; } }
+
+article .block {
+  padding: 0 10px 5px 10px;
+  position: relative;
+  background: var(--color-article-bc, #FFF);
+}
+article .block_seed{
+	padding: 0 3px 5px 3px;
+	position: relative;
+	background: var(--color-article-bc, #FFF);
+}
+
+h2{
+	font-size: 140%;
+	
+	font-weight: bold;
+	color:  var(--color-h2, #FFF);
+	padding: 7px 10px;
+	background: var(--color-title-bc, rgb(41, 41, 41));
+    
+}
+
+h2{
+	font-size: 140%;
+	font-weight: bold;
+	color:  var(--color-h2, #FFF);
+	padding: 7px 10px;
+	background: var(--color-title-bc, rgb(56,56,56));
+	background: var(--color-title-bc, linear-gradient(to bottom,  rgba(56,56,56,1) 0%,rgba(25,25,25,1) 26%,rgba(0,0,0,1) 51%,rgba(25,25,25,1) 83%,rgba(30,30,30,1) 100%));
+
+}
+
+h3{
+	font-size: 100%;
+	font-weight: bold;
+	color:  var(--color-h3, #333);
+	padding: 3px 7px;
+	background: var(--color-title-bc, #f1f1f1);
+	border-top: 1px solid var(--color-h3-border, #CCC);
+	border-bottom: 1px solid var(--color-h3-border, #CCC);
+}
+
+div{
+    padding: 0px 10px;
+}
+
+h1,h3,h4,h5{
+	font-size:100%;
+	font-weight:normal;
+}
+
+a {
+	outline:none;
+	text-decoration:none;
+	color: black;
+}
+
+:root {
+  color-scheme: light;
+  --background-color: rgb(240 240 240);
+  --text-color: rgb(15 15 15);
+  --shadow-color: rgb(15 15 15 / 50%);
+  --accent-color: rgb(240 0 0 / 50%);
+}
+
+:root {
+  --heading-color: red;
+  --duration: 0.5s;
+  --timing: ease;
+}
+
+input {
+  padding: 5px 7px;
+  font-size: 9px;
+  border-radius: 3px;
+  border: 2px solid var(--color-default-border, #ddd);
+  box-sizing: border-box;
+}
+
+.table_style_rseed {
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  min-width: max-content;
+}
+
+.table_style_rseed th {
+  text-align: left;
+  padding: 4px;
+  background: var(--color-default-table-th-bc, #f1f1f1);
+  border-right: solid var(--color-table-default-border, #ccc) 1px;
+  border-bottom: solid var(--color-table-default-border, #ccc) 1px;
+  border-top: solid var(--color-table-default-border, #ccc) 1px;
+  vertical-align: top;
+}
+
+.table_style_rseed td {
+  text-align: left;
+  padding: 4px;
+  border-right: solid var(--color-table-default-border, #ccc) 1px;
+  border-bottom: solid var(--color-table-default-border, #ccc) 1px;
+}
+
+table {
+  font-size: 1em;
+
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#gatya_table_wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+#copybutton {
+  margin: 0;
+  float: right;
+}
+
+.nd {
+    font-weight: normal;
+}
+#selected_item ,#selected_name {
+  padding: 0;
+}
+
+.srstyle {
+  background-color: #ffff00;
+}
+.upurstyle {
+  background-color: #fa8072;
+}
+.urstyle {
+  background-color: #ff0000;
+  font-weight:bold;
+}
+.uplrstyle {
+  background-color: rgb(102, 78, 224);
+  font-weight:bold;
+}
+.lrstyle {
+  background-color: rgb(148, 0, 211);
+  font-weight:bold;
+}
+.upursaistyle {
+  background-color: #fa8072;
+  font-weight:bold;
+}
+.genteistyle {
+  background-color: #00ffff;
+}
+.nomalstyle {
+  background-color: #ffffff;
+}
+.lglrstyle {
+  background-color: #f1f1f1;
+}
+
+.detailses {
+  margin-bottom: 2px;
+  border-bottom: 2px solid #d0d0d0;
+  width: 500px;
+}
+.detailses {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 0.5em 2em;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.min80 {
+  min-width: 80px;
+}
