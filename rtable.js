@@ -1299,9 +1299,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   const nds = [],uds = [];
+  let rows = "";
   for (let i = 0; i < 300; i++) {
-    tableBody.innerHTML += createRow(i);
+    rows += createRow(i);
   }
+  tableBody.insertAdjacentHTML("beforeend", rows);
   dsview(aread[0],bread[0],nds,uds);
   nextds.innerHTML = `伝説枠:${nds}... 昇格伝説枠:${uds}...`
 
