@@ -226,7 +226,7 @@ html, body {
 @media (max-width: 750px) {
   .table_style_rseed {
     display: block;
-    width: 100%;
+    width: 100vh;
     overflow-x: auto;  /* 横スクロール対応 */
     -webkit-overflow-scrolling: touch; /* iOS滑らかスクロール */
   }
@@ -234,7 +234,7 @@ html, body {
   .table_style_rseed th,
   .table_style_rseed td {
     font-size: 12px;     /* 読みやすいサイズ */
-    padding: 6px;        /* タップしやすく */
+    padding: 6px;
     white-space: nowrap; /* 折り返さずスクロールにする */
   }
 
