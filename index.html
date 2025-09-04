@@ -13,6 +13,19 @@
         <br>
         <select id="series" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" style="width:30%">
             <optgroup label="スケジュール内ガチャ"></optgroup>
+            <option value="993">09-01～09-04 超ネコ祭(993)</option>
+            <option value="991">09-01～09-04 ギガントゼウス(991)</option>
+            <option value="696g15">09-04～09-06 レッドバスターズ(696)</option>
+            <option value="452g15">09-04～09-06 エアバスターズ(452)</option>
+            <option value="906g15">09-04～09-06 メタルバスターズ(906)</option>
+            <option value="1005g11">09-06～09-09 エレメンタルピクシーズ(1005) [確定]</option>
+            <option value="523g15">09-09～09-12 波動バスターズ(523)</option>
+            <option value="772g15">09-09～09-12 超生命体バスターズ(772)</option>
+            <option value="1007">09-12～09-15 極ネコ祭(1007)</option>
+            <option value="995">07-28～ プラチナガチャ(995)</option>
+            <option value="996">07-28～ レジェンドガチャ(996)</option>
+            <option value="1008">09-06～ プラチナガチャ(1008)</option>
+            <option value="1009">09-06～ レジェンドガチャ(1009)</option>
             <optgroup label="祭1"></optgroup>
             <option value="1006">超ネコ祭</option>
             <option value="1007">極ネコ祭</option>
@@ -42,7 +55,7 @@
             <option value="992">ギガントゼウス</option>
             <option value="980">アイアンウォーズ</option>
             <option value="950">ギャルズモンスターズ</option>
-            <option value="951">エレメンタルピクシーズ</option>
+            <option value="1005">エレメンタルピクシーズ</option>
             <optgroup label="季節"></optgroup>
             <option value="922">ハロウィン</option>
             <option value="940">クリスマスギャルズ</option>
@@ -51,7 +64,7 @@
             <option value="968">ホワイトデー</option>
             <option value="887">ジューンブライド</option>
             <option value="1010">サマーガールズ サンシャイン</option>
-            <option value="997">サマーガールズ ブルーオーシャン</option>
+            <option value="1001">サマーガールズ ブルーオーシャン</option>
             <optgroup label="セレクション"></optgroup>
             <option value="936">ウルトラ4セレクション</option>
             <option value="937">ミラクル4セレクション</option>
@@ -128,7 +141,6 @@
             <summary>
                 シード値変更
             </summary>
-            <br>
             <p>
                 <input id="seed_select" type="number" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" style="width:50%">　
                 <input id="buttonUpdate" type="button" value="update">
@@ -139,7 +151,6 @@
             <summary>
                 find next view
             </summary>
-            <br>
             <p>
                 <select id="findlist" style="width: 50%;"></select>
                 <input id="findtext" type="text" style="width:25%" placeholder="filter">
@@ -155,7 +166,6 @@
             <summary>
                 add allsub setting
             </summary>
-            <br>
             <p>
                 <select id="allsubactivelist" style="width: 50%;"></select>
                 <input id="addsubfilter" type="text" style="width:25%" placeholder="filter">

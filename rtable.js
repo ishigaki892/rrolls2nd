@@ -173,6 +173,13 @@ const gatyaData = {
     "gt": "gt888",
     "name": "るろうに剣心"
   },
+  "906": {
+    "lr": 10000,
+    "ur": 9500,
+    "sr": 7000,
+    "gt": "gt906",
+    "name": "メタルバスターズ"
+  },
   "913": {
     "lr": 9970,
     "ur": 9470,
@@ -362,12 +369,40 @@ const gatyaData = {
     "gt": "gt986",
     "name": "ネコルガ族"
   },
+  "991": {
+    "lr": 9970,
+    "ur": 9470,
+    "sr": 6970,
+    "gt": "gt991",
+    "name": "ギガンドゼウス"
+  },
   "992": {
     "lr": 9970,
     "ur": 9470,
     "sr": 6970,
     "gt": "gt992",
     "name": "ギガンドゼウス"
+  },
+  "993": {
+    "lr": 9970,
+    "ur": 9470,
+    "sr": 6970,
+    "gt": "gt993",
+    "name": "超ネコ祭"
+  },
+  "995": {
+    "lr": 10000,
+    "ur": 0,
+    "sr": 0,
+    "gt": "gt995",
+    "name": "プラチナガチャ"
+  },
+  "996": {
+    "lr": 9500,
+    "ur": 0,
+    "sr": 0,
+    "gt": "gt996",
+    "name": "レジェンドガチャ"
   },
   "998": {
     "lr": 9970,
@@ -854,7 +889,6 @@ function getkk(seed,arr,RLa,RLb,nameList,labelOffsets,gatya,rounds,ifkaburi,kaku
 
 function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifkaburia,ifkaburib) {
   if (kakut === "") return;
-
   const baseUrl = window.location.origin + window.location.pathname;
 
   for (let i = 0; i <= rounds; i++) {
@@ -995,7 +1029,7 @@ function kakutei(seed, rounds, arr, kakut, recordList, labelOffsets, gatya, ifka
         }
       }
       gtk = url.searchParams.get("gt");
-      seedlink += `${labelk}${i + grrk})<a href="${baseUrl}?seed=${kks}&gt=${gtk}">${kkname}</a>`;
+      seedlink += `${labelk}${i + grrk})<a href="${baseUrl}?seed=${kks}&gt=${gtk}">${kkname}</a><br>`;
     }
     gt = url.searchParams.get("gt");
     seedlink += `${label}${i + grr})<a href="${baseUrl}?seed=${ks}&gt=${gt}">${kname}</a>`;
