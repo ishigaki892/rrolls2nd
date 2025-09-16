@@ -1,4 +1,4 @@
-const TSV_URL = 'https://shibanban2.github.io/bc-event/token/gatya.tsv'; // 取得するTSVのURL
+const TSV_URL = 'https://shibanban2.github.io/bc-event/token/gatya.tsv';
 
 export default async function handler(req, res) {
   try {
