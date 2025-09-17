@@ -35,7 +35,7 @@ const start = performance.now();
 import fetch from "node-fetch";
 
 async function getGatyaData() {
-  const response = await fetch("https://<あなたの-vercel-domain>/api/gatya");
+  const response = await fetch("https://rrolls.vercel.app/api/gatya");
   gtdata = await response.json();
 }
 
