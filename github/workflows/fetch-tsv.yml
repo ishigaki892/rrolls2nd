@@ -4,7 +4,6 @@ on:
   schedule:
     - cron: '*/5 * * * *'
   workflow_dispatch: 
-
 jobs:
   fetch-tsv:
     runs-on: ubuntu-latest
