@@ -32,25 +32,22 @@ let dataif = [];
 let plan_all = [];
 let startday = [], endday = [], id = [], extra = [], normalR = [], normalFlag = [], rareR = [], rareFlag = [], superR = [], superFlag = [], ultraR = [], ultraFlag = [], legendR = [], legendFlag = [], title = [], pickup = [];
 const start = performance.now();  
-async function loadTSV() {
+const API_URL = window.location.hostname.includes("localhost")
+  ? "http://localhost:3000/api/gatya"
+  : "/api/gatya";
+
+async function loadGatyaData() {
   try {
-    const baseURL = window.location.hostname.includes("vercel.app")
-      ? "/api/fetch-tsv.js"
-      : "https://shibanban2.github.io/bc-event/token/gatya.tsv";
-
-    const response = await fetch(baseURL);
-    if (!response.ok) throw new Error("TSV取得失敗");
-    if (baseURL.startsWith("/api/")) {
-      const result = await response.json();
-      gtdata = result.data;
+    const res = await fetch(API_URL);
+    const json = await res.json();
+    if (json.success) {
+      gtdata = json.data;
+      console.log("取得データ:", gtdata);
     } else {
-      const tsvText = await response.text();
-      gtdata = tsvText.trim().split("\n").map(line => line.split("\t"));
+      console.error("APIエラー:", json.error);
     }
-
-    console.log("取得データ:", gtdata);
   } catch (err) {
-    console.error("fetch失敗:", err);
+    console.error(err);
   }
 }
 
