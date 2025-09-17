@@ -2,6 +2,7 @@ export default async function handler(req, res) {
   try {
     const GITHUB_API_URL =
       "https://api.github.com/repos/ishigaki892/rrolls/contents/data/gatya.json?ref=main";
+    const TOKEN = 'ghp_xxxxx';
 
     const response = await fetch(GITHUB_API_URL, {
       headers: {
