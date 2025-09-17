@@ -18,7 +18,19 @@ const addsubfilter = document.getElementById("addsubfilter");
 const allsub = document.getElementById("allsub");
 const planarea = document.getElementById("plan_area");
 const url = new URL(window.location.href);
+const dataget = {
+  1: { id: 10, extra: 13, normal: 14, normalFlag: 15, rare: 16, rareFlag: 17, super: 18, superFlag: 19, ultra: 20, ultraFlag: 21, legend: 22, legendFlag: 23, title: 24, pickup: 28 },
+  2: { id: 25, extra: 28, normal: 29, normalFlag: 30, rare: 31, rareFlag: 32, super: 33, superFlag: 34, ultra: 35, ultraFlag: 36, legend: 37, legendFlag: 38, title: 39, pickup: 43 },
+  3: { id: 40, extra: 43, normal: 44, normalFlag: 45, rare: 46, rareFlag: 47, super: 48, superFlag: 49, ultra: 50, ultraFlag: 51, legend: 52, legendFlag: 53, title: 54, pickup: 58 },
+  4: { id: 55, extra: 58, normal: 59, normalFlag: 60, rare: 61, rareFlag: 62, super: 63, superFlag: 64, ultra: 65, ultraFlag: 66, legend: 67, legendFlag: 68, title: 69, pickup: 73 },
+  5: { id: 70, extra: 73, normal: 74, normalFlag: 75, rare: 76, rareFlag: 77, super: 78, superFlag: 79, ultra: 80, ultraFlag: 81, legend: 82, legendFlag: 83, title: 84, pickup: 88 },
+  6: { id: 85, extra: 88, normal: 89, normalFlag: 90, rare: 91, rareFlag: 92, super: 93, superFlag: 94, ultra: 95, ultraFlag: 96, legend: 97, legendFlag: 98, title: 99, pickup: 103 },
+  7: { id: 100, extra: 103, normal: 104, normalFlag: 105, rare: 106, rareFlag: 107, super: 108, superFlag: 109, ultra: 110, ultraFlag: 111, legend: 112, legendFlag: 113, title: 114, pickup: 118 }
+};
+let gtdata;
+let dataif = [];
 let plan_all = [];
+let startday = [], endday = [], id = [], extra = [], normalR = [], normalFlag = [], rareR = [], rareFlag = [], superR = [], superFlag = [], ultraR = [], ultraFlag = [], legendR = [], legendFlag = [], title = [], pickup = [];
 const start = performance.now();  
 async function loadTSV() {
   try {
@@ -28,21 +40,91 @@ async function loadTSV() {
 
     const response = await fetch(baseURL);
     if (!response.ok) throw new Error("TSV取得失敗");
-    let array2D;
     if (baseURL.startsWith("/api/")) {
       const result = await response.json();
-      array2D = result.data;
+      gtdata = result.data;
     } else {
       const tsvText = await response.text();
-      array2D = tsvText.trim().split("\n").map(line => line.split("\t"));
+      gtdata = tsvText.trim().split("\n").map(line => line.split("\t"));
     }
 
-    console.log("取得データ:", array2D);
+    console.log("取得データ:", gtdata);
   } catch (err) {
     console.error("fetch失敗:", err);
   }
 }
-document.addEventListener("DOMContentLoaded", loadTSV);
+
+function datasetinfo() {
+  dataif = gtdata.map(row => {
+    let datacase;
+    switch (row.length) {
+      case 27:
+        datacase = 1;
+        break;
+      case 44:
+        datacase = 2;
+        break;
+      case 55:
+        datacase = 3;
+        break;
+      case 61:
+        datacase = 4;
+        break;
+      case 70:
+        datacase = 5;
+        break;
+      case 95:
+        datacase = 5;
+        break;
+      case 112:
+        datacase = 6;
+        break;
+      default:
+        datacase = null;
+    }
+    return datacase ? dataget[datacase] : null;
+  });
+}
+
+function getdays(yyyymmdd) {
+  const str = String(yyyymmdd);
+  const month = str.slice(4, 6);
+  const day   = str.slice(6, 8);
+
+  return `${month}-${day}`;
+}
+
+function gtdataget() {
+  datasetinfo();
+  gtdata.forEach((row, rowIndex) => {
+    if (rowIndex === 0 || rowIndex === gtdata.length - 1) return;
+
+    const info = dataif[rowIndex];
+    if (!info) return;
+
+    row.forEach((cell, colIndex) => {
+      if (colIndex === 0) startday.push(getdays(cell));
+      if (colIndex === 2) endday.push(getdays(cell));
+
+      if (colIndex === info.id) id.push(cell);
+      if (colIndex === info.extra) extra.push(cell);
+      if (colIndex === info.normal) normalR.push(cell);
+      if (colIndex === info.normalFlag) normalFlag.push(cell);
+      if (colIndex === info.rare) rareR.push(cell);
+      if (colIndex === info.rareFlag) rareFlag.push(cell);
+      if (colIndex === info.super) superR.push(cell);
+      if (colIndex === info.superFlag) superFlag.push(cell);
+      if (colIndex === info.ultra) ultraR.push(cell);
+      if (colIndex === info.ultraFlag) ultraFlag.push(cell);
+      if (colIndex === info.legend) legendR.push(cell);
+      if (colIndex === info.legendFlag) legendFlag.push(cell);
+      if (colIndex === info.title) title.push(cell);
+      if (colIndex === info.pickup) pickup.push(cell);
+    });
+  });
+  
+      console.log(startday,endday,id,extra,normalR,normalFlag,rareR,rareFlag,superR,superFlag,ultraR,ultraFlag,legendR,legendFlag,title,pickup);
+}
 
 
 import * as gt from './chara_list-r.js';
@@ -1222,7 +1304,9 @@ function getaddtext() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadTSV();
+  gtdataget()
   allsub.innerHTML = `設定されているガチャ:`;
   const tableBody = document.getElementById("gatya_table");
   copyButton.addEventListener("click", () => {
