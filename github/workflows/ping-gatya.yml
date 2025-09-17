@@ -1,13 +1,14 @@
-name: Update Gatya TSV
+name: Ping Vercel API
+
 on:
   schedule:
-    - cron: '*/5 * * * *' 
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
-  update-tsv:
+  ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Send request to Vercel API
+      - name: Call Vercel API
         run: |
           curl -s https://rrolls.vercel.app/api/gatya
