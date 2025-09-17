@@ -9,9 +9,9 @@ async function fetchTSV() {
     const text = await response.text();
     cachedData = text.trim().split("\n").map(line => line.split("\t"));
     lastUpdated = new Date().toISOString();
-    console.log("TSV取得:", lastUpdated);
+    console.log("データ取得成功:", lastUpdated);
   } catch (err) {
-    console.error("TSV取得エラー:", err.message);
+    console.error("データ取得エラー:", err.message);
   }
 }
 
@@ -20,5 +20,6 @@ export default async function handler(req, res) {
   if (!lastUpdated || now - new Date(lastUpdated).getTime() > 5 * 60 * 1000) {
     await fetchTSV();
   }
+  console.log("データ時刻:", lastUpdated);
   res.status(200).json(cachedData);
 }
