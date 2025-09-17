@@ -32,23 +32,11 @@ let dataif = [];
 let plan_all = [];
 let startday = [], endday = [], id = [], extra = [], normalR = [], normalFlag = [], rareR = [], rareFlag = [], superR = [], superFlag = [], ultraR = [], ultraFlag = [], legendR = [], legendFlag = [], title = [], pickup = [];
 const start = performance.now();  
-const API_URL = window.location.hostname.includes("localhost")
-  ? "http://localhost:3000/api/gatya"
-  : "/api/gatya";
+import fetch from "node-fetch";
 
-async function loadTSV() {
-  try {
-    const res = await fetch(API_URL);
-    const json = await res.json();
-    if (json.success) {
-      gtdata = json.data;
-      console.log("取得データ:", gtdata);
-    } else {
-      console.error("APIエラー:", json.error);
-    }
-  } catch (err) {
-    console.error(err);
-  }
+async function getGatyaData() {
+  const response = await fetch("https://<あなたの-vercel-domain>/api/gatya");
+  gtdata = await response.json();
 }
 
 function datasetinfo() {

@@ -8,5 +8,16 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ishigaki892/rrolls.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ishigaki892/rrolls/issues"
+  },
+  "homepage": "https://github.com/ishigaki892/rrolls#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
 }
