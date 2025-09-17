@@ -36,7 +36,7 @@ const API_URL = window.location.hostname.includes("localhost")
   ? "http://localhost:3000/api/gatya"
   : "/api/gatya";
 
-async function loadGatyaData() {
+async function loadTSV() {
   try {
     const res = await fetch(API_URL);
     const json = await res.json();
