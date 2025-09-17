@@ -20,6 +20,6 @@ export default async function handler(req, res) {
   if (!lastUpdated || now - new Date(lastUpdated).getTime() > 5 * 60 * 1000) {
     await fetchTSV();
   }
-  console.log("データ時刻:", lastUpdated);
+  console.log("データ時刻:", lastUpdated ? getJSTString(lastUpdated) : "未取得");
   res.status(200).json(cachedData);
 }
