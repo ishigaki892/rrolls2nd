@@ -32,9 +32,8 @@ let dataif = [];
 let plan_all = [];
 let startday = [], endday = [], id = [], extra = [], normalR = [], normalFlag = [], rareR = [], rareFlag = [], superR = [], superFlag = [], ultraR = [], ultraFlag = [], legendR = [], legendFlag = [], title = [], pickup = [];
 const start = performance.now();  
-import fetch from "node-fetch";
 
-async function getGatyaData() {
+async function loadTSV() {
   const response = await fetch("https://rrolls.vercel.app/api/gatya");
   gtdata = await response.json();
 }

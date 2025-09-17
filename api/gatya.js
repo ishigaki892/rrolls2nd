@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 let cachedData = [];
 let lastUpdated = null;
 const TSV_URL = "https://shibanban2.github.io/bc-event/token/gatya.tsv";
