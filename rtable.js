@@ -1399,61 +1399,59 @@ document.addEventListener("DOMContentLoaded", async () => {
   getfindnext(getGatyaInfo(results[0].gatya).gt_chara);
   setaddallsub();
   function renderHeader(results, tableBody) {
-    const KakutCount = results.filter(r => r.kakut !== 0).length;
-    const totalColSpan = results.length + KakutCount;
+  const KakutCount = results.filter(r => r.kakut !== 0).length;
+  const totalColSpan = results.length + KakutCount;
 
-    let headerRow = `<tr>
-      <th style="width:30px"></th>
-      <th style="width:48.75%" colspan="${totalColSpan}">A</th>
-      ${results.length >= 2 ? `<th style="width:30px"></th>` : ""}
-      <th style="width:48.75%" colspan="${totalColSpan}">B</th>
-    </tr>`;
-    tableBody.innerHTML = headerRow;
+  let headerRow = `<tr>
+    <th style="width:30px"></th>
+    <th style="width:48.75%" colspan="${totalColSpan}">A</th>
+    ${results.length >= 2 ? `<th style="width:30px"></th>` : ""}
+    <th style="width:48.75%" colspan="${totalColSpan}">B</th>
+  </tr>`;
+  tableBody.innerHTML = headerRow;
 
-    let infoRow = `<tr><th class="nd"></th>`;
-    results.forEach((res, index) => {
-      const s = getGatyaInfo(res.gatya);
+  let infoRow = `<tr><th class="nd"></th>`;
+  results.forEach((res, index) => {
+    const baseId = res.gatya.replace(/^100/, "");   // 元id
+    const baseItem = gatyaData[baseId];             // 元のgatyaDataを参照
+    const s = getGatyaInfo(res.gatya);
 
-      if (res.addf && res.addf > 0) {
-        for (let n = 1; n <= res.addf; n++) {
-          s.gt_chara[2].unshift(`-${n}`);
+    const fullId =
+      `${res.gatya}` +
+      (res.kakut ? `g${res.kakut}` : "") +
+      (res.addf ? `a${res.addf}` : "");
+
+    infoRow += `<th class="nd" colspan="${res.kakut !== 0 ? 2 : 1}">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <span>
+          ${baseId} ${baseItem ? baseItem.name : s.gtname}<br>
+          0,${s.sr},${s.ur},${s.lr}
+          ${res.kakut ? `<br>guaranteed:${res.kakut}` : ""}
+          ${res.addf ? `<br>add:${res.addf}` : ""}
+        </span>
+        ${
+          index > 0
+            ? `<button class="remove-sub"
+                data-id="${fullId}"
+                data-index="${index}"
+                style="cursor:pointer;border:none;background:transparent;color:red;font-weight:bold;">✕</button>`
+            : ""
         }
-      }
+      </div>
+    </th>`;
+  });
 
-      const fullId =
-        `${res.gatya}` +
-        (res.kakut ? `g${res.kakut}` : "") +
-        (res.addf ? `a${res.addf}` : "");
-
-      infoRow += `<th class="nd" colspan="${res.kakut !== 0 ? 2 : 1}">
-        <div style="display:flex; align-items:center; justify-content:space-between;">
-          <span>
-            ${res.gatya} ${s.gtname}<br>
-            0,${s.sr},${s.ur},${s.lr}
-            ${res.kakut ? `<br>guaranteed:${res.kakut}` : ""}
-            ${res.addf ? `<br>add:${res.addf}` : ""}
-          </span>
-          ${
-            index > 0
-              ? `<button class="remove-sub"
-                  data-id="${fullId}"
-                  data-index="${index}"
-                  style="cursor:pointer;border:none;background:transparent;color:red;font-weight:bold;">✕</button>`
-              : ""
-          }
-        </div>
-      </th>`;
-    });
-
-    if (results.length >= 2) infoRow += `<th class="nd"></th>`;
+  if (results.length >= 2) infoRow += `<th class="nd"></th>`;
     results.forEach(res => {
-      const s = getGatyaInfo(res.gatya);
+      const baseId = res.gatya.replace(/^100/, "");
+      const baseItem = gatyaData[baseId];
       infoRow += `<th class="nd" colspan="${res.kakut !== 0 ? 2 : 1}">
-        <div>${res.gatya} ${s.gtname}</div></th>`;
+        <div>${baseId} ${baseItem ? baseItem.name : ""}</div></th>`;
     });
     infoRow += `</tr>`;
     tableBody.innerHTML += infoRow;
   }
+
   renderHeader(results, tableBody);
 
   document.addEventListener("click", e => {
