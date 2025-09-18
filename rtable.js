@@ -1240,7 +1240,6 @@ window.addToPlanAll = function (value, cell) {
 
   plan_all.forEach((v, i) => {
     if (v.includes("確定")) {
-      // --- 確定ガチャ ---
       kan += 1500;
       const gt = v.split("-")[0];
       grr = v.split("-")[3];
@@ -1347,7 +1346,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   id.forEach((gachaId, index) => {
     let flagname;
     if (!gachaId) return;
-    const newId = `100${gachaId}`;
+    const newId = `91c7${gachaId}`;
     const item = gatyaData[newId];
     if (!item) return;
     const baseItem = gatyaData[gachaId];
