@@ -32,6 +32,7 @@ let dataif = [];
 let plan_all = [];
 let startday = [], endday = [], id = [], extra = [], normalR = [], normalFlag = [], rareR = [], rareFlag = [], superR = [], superFlag = [], ultraR = [], ultraFlag = [], legendR = [], legendFlag = [], title = [], pickup = [];
 const start = performance.now();  
+let kakuteinibaiflag = [];
 
 async function loadTSV() {
   const response = await fetch("https://rrolls.vercel.app/api/gatya");
@@ -1332,7 +1333,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const legend = Number(legendR[index]) || 0;
     const ultra  = Number(ultraR[index]) || 0;
     const superRr = Number(superR[index]) || 0;
-
+    if (legend === 60 && ultra === 1000) kakuteinibaiflag.push("nibai");
+    if (ultraFlag[index] !== 0) kakuteinibaiflag.push("kakutei");
     gatyaData[newId] = {
       lr: 10000 - legend,
       ur: 10000 - legend - ultra,
@@ -1346,6 +1348,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   optGroup.label = "スケジュール内ガチャ";
 
   id.forEach((gachaId, index) => {
+    let flagname;
     if (!gachaId) return;
     const newId = `100${gachaId}`;
     const item = gatyaData[newId];
@@ -1354,8 +1357,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const name1 = baseItem ? baseItem.name : item.name;
 
     const option = document.createElement("option");
+    if (kakuteinibaiflag[index] === "nibai") flagname = "[2倍]";
+    if (kakuteinibaiflag[index] === "kakutei") flagname = "[確定]";
     option.value = newId;
-    option.textContent = `${startday[index]} ~ ${endday[index]}  ${name1} (${gachaId})`;
+    option.textContent = `${startday[index]} ~ ${endday[index]}  ${name1} (${gachaId}) ${flagname}`;
 
     optGroup.appendChild(option);
   });
