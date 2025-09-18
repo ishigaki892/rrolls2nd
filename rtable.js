@@ -1412,8 +1412,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let infoRow = `<tr><th class="nd"></th>`;
   results.forEach((res, index) => {
-    const baseId = res.gatya.replace(/^100/, "");   // 元id
-    const baseItem = gatyaData[baseId];             // 元のgatyaDataを参照
+    const baseId = res.gatya.replace(/^100/, "");
+    const baseItem = gatyaData[baseId];
     const s = getGatyaInfo(res.gatya);
 
     const fullId =
