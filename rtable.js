@@ -1334,7 +1334,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ultra  = Number(ultraR[index]) || 0;
     const superRr = Number(superR[index]) || 0;
     if (legend === 60 && ultra === 1000) kakuteinibaiflag.push("nibai");
-    if (ultraFlag[index] !== "0") kakuteinibaiflag.push("kakutei");
+    else if (ultraFlag[index] !== "0") kakuteinibaiflag.push("kakutei");
+    else kakuteinibaiflag.push("");
     gatyaData[newId] = {
       lr: 10000 - legend,
       ur: 10000 - legend - ultra,
