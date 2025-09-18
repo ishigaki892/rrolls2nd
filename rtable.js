@@ -1438,7 +1438,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ${
           index > 0
             ? `<button class="remove-sub"
-                data-id="${fullId}"
+                data-id="${baseId}"
                 data-index="${index}"
                 style="cursor:pointer;border:none;background:transparent;color:red;font-weight:bold;">✕</button>`
             : ""
