@@ -664,8 +664,7 @@ function setstyle(s1,aread,bread,areadStyles,breadStyles,namesa,namesb,results) 
       if (s1.gtname !== "レジェンドガチャ" && s1.gtname !== "プラチナガチャ") {
         areadStyle = "upurstyle";
       }
-      if (s1.gtname === "超ネコ祭" || s1.gtname === "極ネコ祭" ||
-          (s1.sr <= 9100 && s1.sr >= 8900)) {
+      if (s1.ur <= 9100 && s1.ur >= 8900) {
         areadStyle = "upursaistyle";
       }
     } else if (aread[i] > s1.ur) {
@@ -683,8 +682,7 @@ function setstyle(s1,aread,bread,areadStyles,breadStyles,namesa,namesb,results) 
       if (s1.gtname !== "レジェンドガチャ" && s1.gtname !== "プラチナガチャ") {
         breadStyle = "upurstyle";
       }
-      if (s1.gtname === "超ネコ祭" || s1.gtname === "極ネコ祭" ||
-          (s1.sr <= 9100 && s1.sr >= 8900)) {
+      if (s1.ur <= 9100 && s1.ur >= 8900) {
         breadStyle = "upursaistyle";
       }
     } else if (bread[i] > s1.ur) {
