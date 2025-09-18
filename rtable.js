@@ -1331,13 +1331,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   const optGroup = document.createElement("optgroup");
   optGroup.label = "スケジュール内ガチャ";
 
-  Object.keys(gatyaData).forEach(key => {
-    if (!key.startsWith("100")) return;
+  id.forEach((gachaId, index) => {
+    if (!gachaId) return;
+    const newId = `100${gachaId}`;
+    const item = gatyaData[newId];
+    if (!item) return;
+    const baseItem = gatyaData[gachaId];
+    const name1 = baseItem ? baseItem.name : item.name;
 
-    const item = gatyaData[key];
     const option = document.createElement("option");
-    option.value = key;
-    option.textContent = `${key} : ${item.name}`;
+    option.value = newId;
+    option.textContent = `${startday[index]} ~ ${endday[index]}  ${name1} (${gachaId})`;
+
     optGroup.appendChild(option);
   });
 
