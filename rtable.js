@@ -1315,11 +1315,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     const newId = `100${gachaId}`;
     if (gatyaData[newId]) return; // 重複回避
 
+    const legend = Number(legendR[index]) || 0;
+    const ultra  = Number(ultraR[index]) || 0;
+    const superRr = Number(superR[index]) || 0;
+
     gatyaData[newId] = {
-      lr: legendR[index],   // legendR → lr
-      ur: ultraR[index],    // ultraR → ur
-      sr: superR[index],    // superR → sr
-      gt: `gt${gachaId}`,   // ★元のIDを使う
+      // ★ここで指定の式で計算
+      lr: 10000 - legend,
+      ur: 10000 - legend - ultra,
+      sr: 10000 - legend - ultra - superRr,
+      gt: `gt${gachaId}`,   // 元のidを使用
       name: title[index]    // ガチャ名
     };
   });
