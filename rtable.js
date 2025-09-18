@@ -664,7 +664,8 @@ function setstyle(s1,aread,bread,areadStyles,breadStyles,namesa,namesb,results) 
       if (s1.gtname !== "レジェンドガチャ" && s1.gtname !== "プラチナガチャ") {
         areadStyle = "upurstyle";
       }
-      if (s1.gtname === "超ネコ祭" || s1.gtname === "極ネコ祭") {
+      if (s1.gtname === "超ネコ祭" || s1.gtname === "極ネコ祭" ||
+          (s1.sr <= 9100 && s1.sr >= 8900)) {
         areadStyle = "upursaistyle";
       }
     } else if (aread[i] > s1.ur) {
@@ -682,7 +683,8 @@ function setstyle(s1,aread,bread,areadStyles,breadStyles,namesa,namesb,results) 
       if (s1.gtname !== "レジェンドガチャ" && s1.gtname !== "プラチナガチャ") {
         breadStyle = "upurstyle";
       }
-      if (s1.gtname === "超ネコ祭" || s1.gtname === "極ネコ祭") {
+      if (s1.gtname === "超ネコ祭" || s1.gtname === "極ネコ祭" ||
+          (s1.sr <= 9100 && s1.sr >= 8900)) {
         breadStyle = "upursaistyle";
       }
     } else if (bread[i] > s1.ur) {
@@ -1516,27 +1518,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const makeSide = (styles, names, kakuteis, kakuts, rowIndex, sideLabel, gachaResults) =>
       styles.map((style, idx) => {
-        const gachaId = gachaResults[idx].gatya;   // ガチャ番号
+        const gachaId = gachaResults[idx].gatya;
         const charName = names[idx][rowIndex] || "";
         const highlight = findChars.includes(charName) ? ' style="background-color:lightgreen;"' : "";
         const seedLabel = sideLabel + (rowIndex + 1); 
         const cellId = `cell-${gachaId}-${seedLabel}`;
-
-        // 通常セル
         let cell = `<td id="${cellId}" class="${style[rowIndex]} min80"${highlight}
                       oncontextmenu="addToPlanAll('${gachaId}-${seedLabel}', this); return false;">
                       ${charName}
                     </td>`;
-
-        // 確定枠セル（存在する場合のみ）
         if (kakuts[idx] !== 0) {
           const kakuteiName = kakuteis[idx][rowIndex] || "";
           const kHighlight = findChars.includes(kakuteiName) ? ' style="background-color:lightgreen;"' : "";
           const kakuteiLabel = (rowIndex + 1) + sideLabel;
           const kakuteiId = `kakutei-${gachaId}-${kakuteiLabel}`;
           const kakuteiInfo = kakuteis[idx][rowIndex] || "";
-
-          // ★ addToPlanAll に渡す文字列を「ガチャID-確定-ラベル」に統一
           cell += `<td id="${kakuteiId}" class="min80"${kHighlight}
                     data-kakutei="${encodeURIComponent(kakuteiInfo)}"
                     oncontextmenu="addToPlanAll('${gachaId}-確定-${kakuteiLabel}-${kakuts[idx]}', this); return false;">
