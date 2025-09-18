@@ -83,30 +83,28 @@ function gtdataget() {
 console.log(gtdata)
   datasetinfo();
   gtdata.forEach((row, rowIndex) => {
-
     const info = dataif[rowIndex];
     if (!info) return;
 
-    row.forEach((cell, colIndex) => {
-      if (colIndex === 0) startday.push(getdays(cell));
-      if (colIndex === 2) endday.push(getdays(cell));
+    startday.push(getdays(row[0]));
+    endday.push(getdays(row[2]));
 
-      if (colIndex === info.id) id.push(cell);
-      if (colIndex === info.extra) extra.push(cell);
-      if (colIndex === info.normal) normalR.push(cell);
-      if (colIndex === info.normalFlag) normalFlag.push(cell);
-      if (colIndex === info.rare) rareR.push(cell);
-      if (colIndex === info.rareFlag) rareFlag.push(cell);
-      if (colIndex === info.super) superR.push(cell);
-      if (colIndex === info.superFlag) superFlag.push(cell);
-      if (colIndex === info.ultra) ultraR.push(cell);
-      if (colIndex === info.ultraFlag) ultraFlag.push(cell);
-      if (colIndex === info.legend) legendR.push(cell);
-      if (colIndex === info.legendFlag) legendFlag.push(cell);
-      if (colIndex === info.title) title.push(cell);
-      if (colIndex === info.pickup) pickup.push(cell);
-    });
+    id.push(row[info.id] ?? "");
+    extra.push(row[info.extra] ?? "");
+    normalR.push(row[info.normal] ?? "");
+    normalFlag.push(row[info.normalFlag] ?? "");
+    rareR.push(row[info.rare] ?? "");
+    rareFlag.push(row[info.rareFlag] ?? "");
+    superR.push(row[info.super] ?? "");
+    superFlag.push(row[info.superFlag] ?? "");
+    ultraR.push(row[info.ultra] ?? "");
+    ultraFlag.push(row[info.ultraFlag] ?? "");
+    legendR.push(row[info.legend] ?? "");
+    legendFlag.push(row[info.legendFlag] ?? "");
+    title.push(row[info.title] ?? "");
+    pickup.push(row[info.pickup] ?? "");
   });
+
   
       console.log(startday,endday,id,extra,normalR,normalFlag,rareR,rareFlag,superR,superFlag,ultraR,ultraFlag,legendR,legendFlag,title,pickup);
 }
