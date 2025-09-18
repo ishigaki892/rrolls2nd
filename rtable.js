@@ -81,7 +81,6 @@ function getdays(yyyymmdd) {
   return `${month}-${day}`;
 }
 function gtdataget() {
-console.log(gtdata)
   datasetinfo();
   gtdata.forEach((row, rowIndex) => {
     const info = dataif[rowIndex];
@@ -124,8 +123,6 @@ console.log(gtdata)
       pickup.push("");
     }
   });
-
-      console.log(startday,endday,id,extra,normalR,normalFlag,rareR,rareFlag,superR,superFlag,ultraR,ultraFlag,legendR,legendFlag,title,pickup);
 }
 
 
