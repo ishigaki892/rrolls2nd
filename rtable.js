@@ -83,7 +83,6 @@ function gtdataget() {
 console.log(gtdata)
   datasetinfo();
   gtdata.forEach((row, rowIndex) => {
-    if (rowIndex === 0 || rowIndex === gtdata.length - 1) return;
 
     const info = dataif[rowIndex];
     if (!info) return;
