@@ -1360,7 +1360,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     optGroup.appendChild(option);
   });
 
-  seriesSelect.appendChild(optGroup);
+  if (seriesSelect.firstChild) {
+    seriesSelect.insertBefore(optGroup, seriesSelect.firstChild);
+  } else {
+    seriesSelect.appendChild(optGroup);
+  }
   allsub.innerHTML = `設定されているガチャ:`;
   const tableBody = document.getElementById("gatya_table");
   copyButton.addEventListener("click", () => {
