@@ -1338,7 +1338,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       ur: 10000 - legend - ultra,
       sr: 10000 - legend - ultra - superRr,
       gt: `gt${gachaId}`,
-      name: title[index]
+      name: gatyaData[gachaId] ? gatyaData[gachaId].name : title[index]
     };
   });
   const seriesSelect = document.getElementById("series");
