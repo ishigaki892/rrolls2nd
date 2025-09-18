@@ -1433,12 +1433,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           ${baseId} ${baseItem ? baseItem.name : s.gtname}<br>
           0,${s.sr},${s.ur},${s.lr}
           ${res.kakut ? `<br>guaranteed:${res.kakut}` : ""}
-          ${res.addf ? `<br>add:${res.addf}` : ""}
+          ${res.addf ? `add:${res.addf}` : ""}
         </span>
         ${
           index > 0
             ? `<button class="remove-sub"
-                data-id="${baseId}"
+                data-id="${fullId}"
                 data-index="${index}"
                 style="cursor:pointer;border:none;background:transparent;color:red;font-weight:bold;">✕</button>`
             : ""
@@ -1449,7 +1449,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (results.length >= 2) infoRow += `<th class="nd"></th>`;
     results.forEach(res => {
-      const baseId = res.gatya.replace(/^100/, "");
+      const baseId = res.gatya.replace(/^91c7/, "");
       const baseItem = gatyaData[baseId];
       infoRow += `<th class="nd" colspan="${res.kakut !== 0 ? 2 : 1}">
         <div>${baseId} ${baseItem ? baseItem.name : ""}</div></th>`;
