@@ -37,8 +37,10 @@ async function loadTSV() {
   const response = await fetch("https://rrolls.vercel.app/api/gatya");
   gtdata = await response.json();
 }
-
+const bango = 16;
 function datasetinfo() {
+  gtdata.splice(0, bango + 1);
+  gtdata.pop();
   dataif = gtdata.map(row => {
     let datacase;
     switch (row.length) {
