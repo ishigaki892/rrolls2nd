@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/ntable.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+    <title>bc normal rolls</title>
+</head>
+<body>
+<article>
+    <h2 style="display:flex;align-items:center;" onclick="changetype()">ノーマルガチャロールズ</h2>
+    <div id="seed_block" class="block">
+    <div><p class="litele_space" style="margin-bottom: 0.2rem;"></p></div>
+    <input id="copybutton" type="button" value="シードをコピー">
+    <br>
+    <div><p class="litele_space" style="margin-bottom: 0.3rem;"></p></div>
+    seed:
+    <input id="seed_select" type="number" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" style="width:20%" >
+    <br>
+    <input id="ok_button" type="button" value="OK">
+    <br>
+    <div id="next_darkcatseye"></div>
+    <table id="gatya_table_wrapper">
+        <tbody id="gatya_table" class="table_style_nseed">
+            <tr>
+                <th id="number_blocks" style="width: 2.5%;"></th>
+                <th id="NCa_blocks" style="width: 16.3%;">NC</th>
+                <th id="LC?Ma_blocks" style="width: 16.3%;"><div id=LCMA></div></th>
+                <th id="LCG?CEa_blocks" style="width: 16.3%;"><div id=LCGCEA></div></th>
+                <th id="NCb_blocks" style="width: 16.3%;">NC</th>
+                <th id="LC?Mb_blocks" style="width: 16.3%;"><div id=LCMB></div></th>
+                <th id="LCG?CEb_blocks" style="width: 16.3%;"><div id=LCGCEB></div></th>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    　＜注意＞　シード値は1以上2^32未満の整数値に収めてください
+    <br>
+    <a href="index.html">　戻る</a>
+</article>
+<script type="module" src="./js/ntable.js"></script>
+</body>
+</html>
