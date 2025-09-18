@@ -88,20 +88,38 @@ console.log(gtdata)
     startday.push(getdays(row[0]));
     endday.push(getdays(row[2]));
 
-    id.push(row[info.id] ?? "");
-    extra.push(row[info.extra] ?? "");
-    normalR.push(row[info.normal] ?? "");
-    normalFlag.push(row[info.normalFlag] ?? "");
-    rareR.push(row[info.rare] ?? "");
-    rareFlag.push(row[info.rareFlag] ?? "");
-    superR.push(row[info.super] ?? "");
-    superFlag.push(row[info.superFlag] ?? "");
-    ultraR.push(row[info.ultra] ?? "");
-    ultraFlag.push(row[info.ultraFlag] ?? "");
-    legendR.push(row[info.legend] ?? "");
-    legendFlag.push(row[info.legendFlag] ?? "");
-    title.push(row[info.title] ?? "");
-    pickup.push(row[info.pickup] ?? "");
+    if (info) {
+      id.push(row[info.id] ?? "");
+      extra.push(row[info.extra] ?? "");
+      normalR.push(row[info.normal] ?? "");
+      normalFlag.push(row[info.normalFlag] ?? "");
+      rareR.push(row[info.rare] ?? "");
+      rareFlag.push(row[info.rareFlag] ?? "");
+      superR.push(row[info.super] ?? "");
+      superFlag.push(row[info.superFlag] ?? "");
+      ultraR.push(row[info.ultra] ?? "");
+      ultraFlag.push(row[info.ultraFlag] ?? "");
+      legendR.push(row[info.legend] ?? "");
+      legendFlag.push(row[info.legendFlag] ?? "");
+      title.push(row[info.title] ?? "");
+      pickup.push(row[info.pickup] ?? "");
+    } else {
+      console.log(rowIndex);
+      id.push("");
+      extra.push("");
+      normalR.push("");
+      normalFlag.push("");
+      rareR.push("");
+      rareFlag.push("");
+      superR.push("");
+      superFlag.push("");
+      ultraR.push("");
+      ultraFlag.push("");
+      legendR.push("");
+      legendFlag.push("");
+      title.push("");
+      pickup.push("");
+    }
   });
 
       console.log(startday,endday,id,extra,normalR,normalFlag,rareR,rareFlag,superR,superFlag,ultraR,ultraFlag,legendR,legendFlag,title,pickup);
