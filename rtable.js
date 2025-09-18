@@ -1313,29 +1313,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!gachaId) return;
 
     const newId = `100${gachaId}`;
-    if (gatyaData[newId]) return; // 重複回避
+    if (gatyaData[newId]) return;
 
     const legend = Number(legendR[index]) || 0;
     const ultra  = Number(ultraR[index]) || 0;
     const superRr = Number(superR[index]) || 0;
 
     gatyaData[newId] = {
-      // ★ここで指定の式で計算
       lr: 10000 - legend,
       ur: 10000 - legend - ultra,
       sr: 10000 - legend - ultra - superRr,
-      gt: `gt${gachaId}`,   // 元のidを使用
-      name: title[index]    // ガチャ名
+      gt: `gt${gachaId}`,
+      name: title[index]
     };
   });
-
-  // --- select#series に optgroup を追加 ---
   const seriesSelect = document.getElementById("series");
   const optGroup = document.createElement("optgroup");
   optGroup.label = "スケジュール内ガチャ";
 
   Object.keys(gatyaData).forEach(key => {
-    if (!key.startsWith("100")) return; // 追加分だけ表示
+    if (!key.startsWith("100")) return;
 
     const item = gatyaData[key];
     const option = document.createElement("option");
