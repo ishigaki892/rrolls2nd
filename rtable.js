@@ -85,6 +85,8 @@ console.log(gtdata)
   datasetinfo();
   gtdata.forEach((row, rowIndex) => {
     const info = dataif[rowIndex];
+    const currentId = row[info.id] ?? "";
+    if (currentId !== "" && Number(currentId) <= 100) return;
 
     startday.push(getdays(row[0]));
     endday.push(getdays(row[2]));
