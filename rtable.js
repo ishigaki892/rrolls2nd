@@ -105,7 +105,9 @@ console.log(gtdata)
     pickup.push(row[info.pickup] ?? "");
   });
 
-  
+  console.log("gtdata[11]:", gtdata[11][info.title]);
+console.log("title[11]:", title[11]);
+
       console.log(startday,endday,id,extra,normalR,normalFlag,rareR,rareFlag,superR,superFlag,ultraR,ultraFlag,legendR,legendFlag,title,pickup);
 }
 
