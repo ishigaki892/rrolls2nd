@@ -661,7 +661,7 @@ function setstyle(s1,aread,bread,areadStyles,breadStyles,namesa,namesb,results) 
     } else if (aread[i] > 9940) {
       areadStyle = "uplrstyle";
     } else if (aread[i] > 9070 && aread[i] < 9500) {
-      if (s1.lr === 9500 || s1.sr === 10000) {
+      if (s1.gtname !== "レジェンドガチャ" && s1.gtname !== "プラチナガチャ") {
         areadStyle = "upurstyle";
       }
       if (s1.ur <= 9100 && s1.ur >= 8900) {
@@ -679,7 +679,7 @@ function setstyle(s1,aread,bread,areadStyles,breadStyles,namesa,namesb,results) 
     } else if (bread[i] > 9940 && s1.gtname != "女王祭") {
       breadStyle = "uplrstyle";
     } else if (bread[i] > 9070 && bread[i] < 9500) {
-      if (s1.lr === 9500 || s1.sr === 10000) {
+      if (s1.gtname !== "レジェンドガチャ" && s1.gtname !== "プラチナガチャ") {
         breadStyle = "upurstyle";
       }
       if (s1.ur <= 9100 && s1.ur >= 8900) {
@@ -692,7 +692,7 @@ function setstyle(s1,aread,bread,areadStyles,breadStyles,namesa,namesb,results) 
     } else {
       breadStyle = "nomalstyle";
     }
-    if (s1.lr === 9500) {
+    if (s1.gtname === "レジェンドガチャ") {
       if (aread[i] > 9970) {
         areadStyle = "lrstyle";
       } else if (aread[i] > 9940) {
@@ -712,7 +712,7 @@ function setstyle(s1,aread,bread,areadStyles,breadStyles,namesa,namesb,results) 
         breadStyle = "nomalstyle";
       }
     }
-    if (s1.sr === 10000) {
+    if (s1.gtname === "プラチナガチャ") {
       if (aread[i] > 9970) {
         areadStyle = "lrstyle";
       } else if (aread[i] > 9940) {
