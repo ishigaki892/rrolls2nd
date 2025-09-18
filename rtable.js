@@ -77,8 +77,8 @@ function getdays(yyyymmdd) {
 
   return `${month}-${day}`;
 }
-console.log(gtdata)
 function gtdataget() {
+console.log(gtdata)
   datasetinfo();
   gtdata.forEach((row, rowIndex) => {
     if (rowIndex === 0 || rowIndex === gtdata.length - 1) return;
