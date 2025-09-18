@@ -1294,7 +1294,6 @@ window.addToPlanAll = function (value, cell) {
   planarea.innerHTML = `必要缶数 ${kan} 缶<br>------------<br>gr ${seedd} ${gr.trim()}`;
 };
 
-
 function getaddtext() {
   const addsubfilter = document.getElementById("addsubfilter").value.trim();
   const addsubselect = document.getElementById("allsubactivelist");
@@ -1725,4 +1724,5 @@ document.addEventListener("DOMContentLoaded", async () => {
   })
 
   console.log(`実行速度: ${performance.now() - start}ms`);
+  console.log(kakuteinibaiflag);
 });
