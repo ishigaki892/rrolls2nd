@@ -1323,7 +1323,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   id.forEach((gachaId, index) => {
     if (!gachaId) return;
 
-    const newId = `100${gachaId}`;
+    const newId = `91c7${gachaId}`;
     if (gatyaData[newId]) return;
 
     const legend = Number(legendR[index]) || 0;
@@ -1419,7 +1419,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let infoRow = `<tr><th class="nd"></th>`;
   results.forEach((res, index) => {
-    const baseId = res.gatya.replace(/^100/, "");
+    const baseId = res.gatya.replace(/^91c7/, "");
     const baseItem = gatyaData[baseId];
     const s = getGatyaInfo(res.gatya);
 
