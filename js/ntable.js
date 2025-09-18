@@ -59,12 +59,10 @@ class Xorshift32 {
   }
 }
 
-// 閾値から評価関数を作成
 function createGetValueFn(lr, ur, sr, nr) {
   return v => v >= lr ? 4 : v >= ur ? 3 : v >= sr ? 2 : v >= nr ? 1 : 0;
 }
 
-// 共通処理
 function processGacha(seed, rounds, arr, valueFn, nameList, recordList, darkList, labelOffsets, gatya, checkDark = false) {
   let mae_seed = "", kaburi = "";
   const baseUrl = window.location.origin + window.location.pathname;
@@ -419,8 +417,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   let seed = url.searchParams.get("seed") || "";
   if (seed) seedSelect.value = seed;
-
-  // gatyaの値で閾値設定
   let sc_lr, sc_ur, sc_sr, sc_nr, th_lr, th_ur, th_sr, th_nr;
   const gatya = url.searchParams.get("type");
   if (gatya === "0") {
@@ -435,11 +431,9 @@ document.addEventListener("DOMContentLoaded", function() {
     lcmb.innerHTML = "M"; lcgcb.innerHTML = "CE";
   }
 
-  // 関数化したgetValueを作成
   const getValuesc = createGetValueFn(sc_lr, sc_ur, sc_sr, sc_nr);
   const getValueth = createGetValueFn(th_lr, th_ur, th_sr, th_nr);
   const getValuenl = createGetValueFn(10000, 10000, 10000, 0);
-  // ノーマル
   const namesa = [], namesb = [], nka = [], nkb = [],ka2 = [],kb2 = [],ka3 = [],kb3 = [];
   processGacha(seed, 100, gt.nomal, getValuenl, namesa, nka, dca, { single: "B", double: "B", triple: "B", add: 2 }, gatya, true);
   processGacha(new Xorshift32(seed).random(), 100, gt.nomal, getValuenl, namesb, nkb, dcb, { single: "A", double: "A", triple: "A", add: 3 }, gatya, true);
@@ -465,7 +459,6 @@ document.addEventListener("DOMContentLoaded", function() {
     getKbK(new Xorshift32(seed).random(), gt.CE, ka3, kb3, namesgb, { single: "RA", double: "RB", triple: "RA", add: 3 }, getValueth, gatya, 100);
   }
 
-  // 表描画
   const tableBody = document.getElementById("gatya_table");
   for (let i = 0; i < 100; i++) {
     const areadStyle = dca[i] === "T" ? ' style="background-color:rgb(193, 120, 255);"' : "";
@@ -482,7 +475,6 @@ document.addEventListener("DOMContentLoaded", function() {
       </tr>`;
   }
 
-  // 闇猫目探索
   let darkcatseye_next = [];
   seed = url.searchParams.get("seed");
   for (let i = 0; i <= 500; i++) {
@@ -494,14 +486,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if ((ra % 10000) >= 9900) darkcatseye_next.push(i + 1 + "A");
     if ((rb % 10000) >= 9900) darkcatseye_next.push(i + 1 + "B");
   }
-
-  if (seed >= 4294967296 || seed <= 0) {
-    console.log("%cシード値が不正です\n1~4294967295の範囲に収めてください\n(正しい挙動にならない可能性があります)", "color: rgb(255,0,0)");
-  } else {
-    console.log("正しく動作しています");
-  }
   darkcatseye_findnext.innerHTML = "闇猫目:" + darkcatseye_next + "...";
-  console.log("プログラムが正常に終了しました", "seed:", url.searchParams.get("seed"), "type:", url.searchParams.get("type"));
-  console.log("最短の闇猫目の位置:", darkcatseye_next[0]);
   console.log(`実行速度: ${performance.now() - start}ms`);
 });
