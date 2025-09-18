@@ -45,6 +45,7 @@ function datasetinfo() {
     let datacase;
     switch (row.length) {
       case 27:
+      case 29:
         datacase = 1;
         break;
       case 44:
@@ -54,7 +55,7 @@ function datasetinfo() {
         datacase = 3;
         break;
       case 61:
-        datacase = 4;
+        datacase = 3;
         break;
       case 70:
         datacase = 5;
