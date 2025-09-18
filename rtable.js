@@ -82,7 +82,6 @@ function getdays(yyyymmdd) {
   return `${month}-${day}`;
 }
 function gtdataget() {
-console.log(gtdata)
   datasetinfo();
   gtdata.forEach((row, rowIndex) => {
     const info = dataif[rowIndex];
@@ -108,7 +107,7 @@ console.log(gtdata)
       title.push(row[info.title] ?? "");
       pickup.push(row[info.pickup] ?? "");
     } else {
-      console.log(rowIndex);
+      console.log("データなし", rowIndex);
       id.push("");
       extra.push("");
       normalR.push("");
@@ -125,8 +124,6 @@ console.log(gtdata)
       pickup.push("");
     }
   });
-
-      console.log(startday,endday,id,extra,normalR,normalFlag,rareR,rareFlag,superR,superFlag,ultraR,ultraFlag,legendR,legendFlag,title,pickup);
 }
 
 
@@ -1358,7 +1355,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const option = document.createElement("option");
     if (kakuteinibaiflag[index] === "nibai") flagname = "[2倍]";
-    if (kakuteinibaiflag[index] === "kakutei") flagname = "[確定]";
+    else if (kakuteinibaiflag[index] === "kakutei") flagname = "[確定]";
+    else flagname = "";
     option.value = newId;
     option.textContent = `${startday[index]} ~ ${endday[index]}  ${name1} (${gachaId}) ${flagname}`;
 
@@ -1724,5 +1722,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   })
 
   console.log(`実行速度: ${performance.now() - start}ms`);
-  console.log(kakuteinibaiflag);
 });
