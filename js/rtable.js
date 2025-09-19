@@ -643,14 +643,14 @@ function dsview(aread,bread,nds,uds,uuds) {
     } else if (aread[i] > 9940) {
       uds.push(i + 1 + "A");
     } else if (aread[i] > 9930) {
-      uuds.push(i + 1, "A");
+      uuds.push(i + 1 + "A");
     }
     if (bread[i] > 9970) {
       nds.push(i + 1 + "B"); 
     } else if (bread[i] > 9940) {
       uds.push(i + 1 + "B");
     } else if (bread[i] > 9930) {
-      uuds.push(i + 1, "B");
+      uuds.push(i + 1 + "B");
     } 
   }
 }
