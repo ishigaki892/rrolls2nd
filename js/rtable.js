@@ -17,6 +17,7 @@ const allsublist  = document.getElementById("allsubactivelist");
 const addsubfilter = document.getElementById("addsubfilter");
 const allsub = document.getElementById("allsub");
 const planarea = document.getElementById("plan_area");
+const copyarea = document.getElementById("nowseed");
 const url = new URL(window.location.href);
 const dataget = {
   1: { id: 10, extra: 13, normal: 14, normalFlag: 15, rare: 16, rareFlag: 17, super: 18, superFlag: 19, ultra: 20, ultraFlag: 21, legend: 22, legendFlag: 23, title: 24, pickup: 28 },
@@ -37,12 +38,6 @@ let kakuteinibaiflag = [];
 async function loadTSV() {
   const response = await fetch("https://rrolls.vercel.app/api/gatya");
   gtdata = await response.json();
-}
-
-function txtCopy() {
-  const nowseed = document.getElementById("nowseed");
-  const seed = url.searchParams.get("seed");
-  nowseed.innerHTML = seed;
 }
 const bango = 16;
 function datasetinfo() {
@@ -1352,6 +1347,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const seriesSelect = document.getElementById("series");
   const optGroup = document.createElement("optgroup");
   optGroup.label = "スケジュール内ガチャ";
+  copyarea.innerHTML = seed;
 
   id.forEach((gachaId, index) => {
     let flagname;
