@@ -1582,7 +1582,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     rows += createRow(i);
   }
   tableBody.insertAdjacentHTML("beforeend", rows);
-  dsview(aread[0],bread[0],nds,uds);
+  dsview(aread[0],bread[0],nds,uds,uuds);
   nextds.innerHTML = `伝説枠:${nds}... 昇格伝説枠:${uds}...<br>追加伝説枠(0.7%):${uuds}`
 
   delsub.addEventListener("click", () => {
