@@ -1347,7 +1347,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const seriesSelect = document.getElementById("series");
   const optGroup = document.createElement("optgroup");
   optGroup.label = "スケジュール内ガチャ";
-  copyarea.innerHTML = seed;
 
   id.forEach((gachaId, index) => {
     let flagname;
@@ -1725,6 +1724,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     findarea.innerHTML = ``;
     updateHighlights();
   })
+  copyarea.innerHTML = seed;
 
   console.log(`実行速度: ${performance.now() - start}ms`);
 });
