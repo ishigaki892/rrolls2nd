@@ -636,18 +636,22 @@ function getGatyaInfo(gatya) {
     }
 }
 
-function dsview(aread,bread,nds,uds) {
+function dsview(aread,bread,nds,uds,uuds) {
   for (let i = 0; i < 300; i++) {
     if (aread[i] > 9970) {
       nds.push(i + 1 + "A"); 
-    } else  if (aread[i] > 9940) {
+    } else if (aread[i] > 9940) {
       uds.push(i + 1 + "A");
+    } else if (aread[i] > 9930) {
+      uuds.push(i + 1, "A");
     }
     if (bread[i] > 9970) {
       nds.push(i + 1 + "B"); 
-    } else  if (bread[i] > 9940) {
+    } else if (bread[i] > 9940) {
       uds.push(i + 1 + "B");
-    }
+    } else if (bread[i] > 9930) {
+      uuds.push(i + 1, "B");
+    } 
   }
 }
 
@@ -1572,14 +1576,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  const nds = [],uds = [];
+  const nds = [],uds = [], uuds = [];
   let rows = "";
   for (let i = 0; i < 300; i++) {
     rows += createRow(i);
   }
   tableBody.insertAdjacentHTML("beforeend", rows);
   dsview(aread[0],bread[0],nds,uds);
-  nextds.innerHTML = `伝説枠:${nds}... 昇格伝説枠:${uds}...`
+  nextds.innerHTML = `伝説枠:${nds}... 昇格伝説枠:${uds}...<br>追加伝説枠(0.7%):${uuds}`
 
   delsub.addEventListener("click", () => {
     const inputNumber = url.searchParams.get("seed");
