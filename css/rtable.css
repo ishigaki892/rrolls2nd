@@ -160,7 +160,9 @@ html, body {
 
 #copybutton {
   margin: 0;
-  float: right;
+  width: 12px;
+  height: 12px;
+  background-image: url(../img/copybutton.png);
 }
 
 .nd {
