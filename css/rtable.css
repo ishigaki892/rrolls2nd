@@ -158,12 +158,20 @@ html, body {
   padding: 0;
 }
 
-#copybutton {
-  margin: 0;
-  width: 12px;
-  height: 12px;
-  background-image: url("../img/copybutton.png");
+#blockseed{
+  text-align: right;
+  padding: 5px 10px 0 10px;
 }
+
+#copybutton {
+  display: inline-block;   /* 要素を表示 */
+  width: 24px;             /* 少し大きめに */
+  height: 24px;
+  background-image: url("../img/copybutton.png");
+  background-size: contain; /* 画像全体を表示 */
+  background-repeat: no-repeat;
+}
+
 
 .nd {
     font-weight: normal;
