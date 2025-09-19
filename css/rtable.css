@@ -162,7 +162,7 @@ html, body {
   margin: 0;
   width: 12px;
   height: 12px;
-  background-image: url(../img/copybutton.png);
+  background-image: url("../img/copybutton.png");
 }
 
 .nd {
