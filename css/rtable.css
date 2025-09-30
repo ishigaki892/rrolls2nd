@@ -245,4 +245,7 @@ html, body {
   .detailses {
     width: 75vw;
   }
+  #series {
+    width: 50%;
+  }
 }
