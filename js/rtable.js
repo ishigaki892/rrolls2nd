@@ -1741,7 +1741,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const url = new URL(location.href);
     const seed = url.searchParams.get("seed") || "0";
     const list = readAddAll();
-    if (list.length === 0) return;
+    if (list.length === 0) {
+      alert("未設定です");
+      return;
+    }
     let g = document.getElementById("guranteed").value;
     let a = document.getElementById("addfutureuber").value;
     g = g === "0" ? "" : `g${g}`;
