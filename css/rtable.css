@@ -175,6 +175,7 @@ html, body {
 
 .nd {
     font-weight: normal;
+    position: sticky !important;
 }
 #selected_item ,#selected_name {
   padding: 0;
@@ -238,6 +239,16 @@ html, body {
 .detailses > *:not(summary) {
   display: block;
   margin-left: 1em;
+}
+
+.topkote1 {
+  top: 0;
+  z-index: 114514;
+}
+
+.topkote2 {
+  top: 2.2em;
+  z-index: 114514;
 }
 
 
