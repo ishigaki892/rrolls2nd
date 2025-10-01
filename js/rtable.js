@@ -1457,13 +1457,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let headerRow = `<tr>
     <th style="width:30px"></th>
-    <th style="width:48.75%" colspan="${totalColSpan}">A</th>
+    <th style="width:48.75%" class="upmax" colspan="${totalColSpan}">A</th>
     ${results.length >= 2 ? `<th style="width:30px"></th>` : ""}
-    <th style="width:48.75%" colspan="${totalColSpan}">B</th>
+    <th style="width:48.75%" class="upmax" colspan="${totalColSpan}">B</th>
   </tr>`;
   tableBody.innerHTML = headerRow;
 
-  let infoRow = `<tr><th class="nd upmax"></th>`;
+  let infoRow = `<tr><th class="nd upmin"></th>`;
   results.forEach((res, index) => {
     const baseId = res.gatya.replace(/^bc/, "");
     const baseItem = gatyaData[baseId];
