@@ -1463,7 +1463,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   </tr>`;
   tableBody.innerHTML = headerRow;
 
-  let infoRow = `<tr><th class="nd"></th>`;
+  let infoRow = `<tr><th class="nd upmax"></th>`;
   results.forEach((res, index) => {
     const baseId = res.gatya.replace(/^bc/, "");
     const baseItem = gatyaData[baseId];
@@ -1474,7 +1474,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       (res.kakut ? `g${res.kakut}` : "") +
       (res.addf ? `a${res.addf}` : "");
 
-    infoRow += `<th class="nd upmax" colspan="${res.kakut !== 0 ? 2 : 1}">
+    infoRow += `<th class="nd upmin" colspan="${res.kakut !== 0 ? 2 : 1}">
       <div style="display:flex; align-items:center; justify-content:space-between;">
         <span>
           ${baseId} ${baseItem ? baseItem.name : s.gtname}<br>
