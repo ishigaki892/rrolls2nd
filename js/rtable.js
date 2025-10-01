@@ -39,7 +39,7 @@ async function loadTSV() {
   const response = await fetch("https://rrolls.vercel.app/api/gatya");
   gtdata = await response.json();
 }
-const bango = 10;
+const bango = 16;
 function datasetinfo() {
   gtdata.splice(0, bango + 1);
   gtdata.pop();
@@ -1369,7 +1369,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   id.forEach((gachaId, index) => {
     if (!gachaId) return;
 
-    const newId = `91c7${gachaId}`;
+    const newId = `91c#${gachaId}`;
     if (gatyaData[newId]) return;
 
     const legend = Number(legendR[index]) || 0;
