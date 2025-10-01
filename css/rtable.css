@@ -175,7 +175,7 @@ html, body {
 
 .nd {
     font-weight: normal;
-    position: sticky !important;
+    position: sticky;
 }
 #selected_item ,#selected_name {
   padding: 0;
@@ -242,11 +242,13 @@ html, body {
 }
 
 .topkote1 {
+  position: sticky !important;
   top: 0;
   z-index: 114514;
 }
 
 .topkote2 {
+  position: sticky !important;
   top: 2.2em;
   z-index: 114514;
 }
