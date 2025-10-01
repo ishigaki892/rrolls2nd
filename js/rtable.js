@@ -1465,7 +1465,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let infoRow = `<tr><th class="nd"></th>`;
   results.forEach((res, index) => {
-    const baseId = res.gatya.replace(/^91c#*/, "");
+    const baseId = res.gatya.replace(/^bc/, "");
     const baseItem = gatyaData[baseId];
     const s = getGatyaInfo(res.gatya);
 
