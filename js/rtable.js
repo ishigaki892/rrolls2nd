@@ -773,10 +773,10 @@ function setstyle(s1,aread,bread,areadStyles,breadStyles,namesa,namesb,results) 
         breadStyle = "nomalstyle";
       }
     }
-    if (namesa[i].includes("ガオ") || namesa[i].includes("ダル") || namesa[i].includes("ミタマ") || namesa[i].includes("キャス") || namesa[i].includes("ガル") || namesa[i].includes("フォノ") || namesa[i].includes("天女") || namesa[i].includes("エマ") || namesa[i].includes("閃雷機兵") || namesa[i].includes("シリウス") || namesa[i].includes("隼さ") || namesa[i].includes("拳パ") || namesa[i].includes("-")) {
+    if (namesa[i].includes("ガオ") || namesa[i].includes("ダルタ") || namesa[i].includes("ミタマ") || namesa[i].includes("キャス") || namesa[i].includes("ガル") || namesa[i].includes("フォノ") || namesa[i].includes("天女") || namesa[i].includes("エマ") || namesa[i].includes("閃雷機兵") || namesa[i].includes("シリウス") || namesa[i].includes("隼さ") || namesa[i].includes("拳パ") || namesa[i].includes("-")) {
       areadStyle = "genteistyle";
     }
-    if (namesb[i].includes("ガオ") || namesb[i].includes("ダル") || namesb[i].includes("ミタマ") || namesb[i].includes("キャス") || namesb[i].includes("ガル") || namesb[i].includes("フォノ") || namesb[i].includes("天女") || namesb[i].includes("エマ") || namesb[i].includes("閃雷機兵") || namesb[i].includes("シリウス") || namesb[i].includes("隼さ") || namesb[i].includes("拳パ") || namesb[i].includes("-")) {
+    if (namesb[i].includes("ガオ") || namesb[i].includes("ダルタ") || namesb[i].includes("ミタマ") || namesb[i].includes("キャス") || namesb[i].includes("ガル") || namesb[i].includes("フォノ") || namesb[i].includes("天女") || namesb[i].includes("エマ") || namesb[i].includes("閃雷機兵") || namesb[i].includes("シリウス") || namesb[i].includes("隼さ") || namesb[i].includes("拳パ") || namesb[i].includes("-")) {
       breadStyle = "genteistyle";
     }
     areadStyles.push(areadStyle);
