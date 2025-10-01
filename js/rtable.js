@@ -1369,7 +1369,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   id.forEach((gachaId, index) => {
     if (!gachaId) return;
 
-    const newId = `91c#${gachaId}`;
+    const newId = `91c#*${gachaId}`;
     if (gatyaData[newId]) return;
 
     const legend = Number(legendR[index]) || 0;
