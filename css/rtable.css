@@ -240,19 +240,19 @@ html, body {
   margin-left: 1em;
 }
 
-.upmax {
+.table_style_rseed th.upmax {
   position: sticky;
-  top: 0;
+  top: 0;        /* 一番上 */
   background: #fff;
-  z-index: 10;
-}
-.upmin {
-  position: sticky;
-  top: 2.2em;
-  background: #fff;
-  z-index: 9;
+  z-index: 20;
 }
 
+.table_style_rseed th.upmin {
+  position: sticky;
+  top: 2.2em;    /* upmax の下に配置 */
+  background: #fff;
+  z-index: 19;
+}
 
 @media (max-width: 750px) {
   .detailses {
