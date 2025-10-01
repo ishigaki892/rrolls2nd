@@ -1369,7 +1369,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   id.forEach((gachaId, index) => {
     if (!gachaId) return;
 
-    const newId = `91c#*${gachaId}`;
+    const newId = `bc${gachaId}`;
     if (gatyaData[newId]) return;
 
     const legend = Number(legendR[index]) || 0;
@@ -1393,7 +1393,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   id.forEach((gachaId, index) => {
     let flagname;
     if (!gachaId) return;
-    const newId = `91c#*${gachaId}`;
+    const newId = `bc${gachaId}`;
     const item = gatyaData[newId];
     if (!item) return;
     const baseItem = gatyaData[gachaId];
@@ -1496,7 +1496,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (results.length >= 2) infoRow += `<th class="nd"></th>`;
     results.forEach(res => {
-      const baseId = res.gatya.replace(/^91c7/, "");
+      const baseId = res.gatya.replace(/^bc/, "");
       const baseItem = gatyaData[baseId];
       infoRow += `<th class="nd" colspan="${res.kakut !== 0 ? 2 : 1}">
         <div>${baseId} ${baseItem ? baseItem.name : ""}</div></th>`;
