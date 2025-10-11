@@ -1399,7 +1399,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const option = document.createElement("option");
     console.log(kakuteinibaiflag[index] !== "nibai")
-    console.log(kakuteinibaiflag[index])
+    console.log(kakuteinibaiflag[index] !== 0)
     if (kakuteinibaiflag[index] === "nibai") flagname = "[2倍]";
     else if (kakuteinibaiflag[index] !== "nibai" && kakuteinibaiflag[index] !== 0) flagname = "[確定]";
     else flagname = "";
