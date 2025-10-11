@@ -1650,11 +1650,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   delsub.addEventListener("click", () => {
     const inputNumber = url.searchParams.get("seed");
     let inputkakut = guranteed.value === "0" ? "" : `g${guranteed.value}`;
-    const inputGatya = gacha.value + inputkakut;
+
+    const selectedOption = gacha.options[gacha.selectedIndex];
+    const dataG = selectedOption?.dataset.G || "";
+    let inputGatya = gacha.value + inputkakut;
+
+    if (String(dataG) === "1") {
+      inputGatya += "g11";
+    }
+
     url.searchParams.set("seed", inputNumber);
     url.searchParams.set("gt", inputGatya);
     location.href = url;
   });
+
   addfindnext.addEventListener("click", () => {
     const flatNamesA = namesA.flat();
     const flatNamesB = namesB.flat();
