@@ -1399,9 +1399,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const option = document.createElement("option");
     console.log(kakuteinibaiflag[index] !== "nibai")
-    console.log(kakuteinibaiflag[index] !== 0)
+    console.log(kakuteinibaiflag[index] === 1)
     if (kakuteinibaiflag[index] === "nibai") flagname = "[2倍]";
-    else if (kakuteinibaiflag[index] !== "nibai" && kakuteinibaiflag[index] !== 0) flagname = "[確定]";
+    else if (kakuteinibaiflag[index] !== "nibai" && kakuteinibaiflag[index] === 1) flagname = "[確定]";
     else flagname = "";
     option.value = newId;
     option.dataset.dataG = ultraFlag[index];
