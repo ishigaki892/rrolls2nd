@@ -1376,7 +1376,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ultra  = Number(ultraR[index]) || 0;
     const superRr = Number(superR[index]) || 0;
     if (legend === 60 && ultra === 1000) kakuteinibaiflag.push("nibai");
-    else if (ultraFlag[index] !== "0") kakuteinibaiflag.push("kakutei");
+    else if (ultraFlag[index] !== "0") kakuteinibaiflag.push(ultraFlag[index]);
     else kakuteinibaiflag.push("");
     gatyaData[newId] = {
       lr: 10000 - legend,
@@ -1401,9 +1401,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const option = document.createElement("option");
     if (kakuteinibaiflag[index] === "nibai") flagname = "[2倍]";
-    else if (kakuteinibaiflag[index] === "kakutei") flagname = "[確定]";
+    else if (kakuteinibaiflag[index] !== "nibai" || kakuteinibaiflag[index] !== "") flagname = "[確定]";
     else flagname = "";
     option.value = newId;
+    option.dataset.dataG = ultraFlag[index];
     option.textContent = `${startday[index]} ~ ${endday[index]}  ${name1} (${gachaId}) ${flagname}`;
 
     optGroup.appendChild(option);
