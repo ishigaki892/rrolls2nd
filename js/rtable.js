@@ -1375,6 +1375,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const legend = Number(legendR[index]) || 0;
     const ultra  = Number(ultraR[index]) || 0;
     const superRr = Number(superR[index]) || 0;
+    console.log(ultraFlag[index]);
     if (legend === 60 && ultra === 1000) kakuteinibaiflag.push("nibai");
     else if (ultraFlag[index] !== "0") kakuteinibaiflag.push(ultraFlag[index]);
     else kakuteinibaiflag.push("");
