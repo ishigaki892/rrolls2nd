@@ -1367,10 +1367,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadTSV();
   gtdataget()
   id.forEach((gachaId, index) => {
-    if (!gachaId) return;
 
     const newId = `bc${gachaId}`;
-    if (gatyaData[newId]) return;
 
     const legend = Number(legendR[index]) || 0;
     const ultra  = Number(ultraR[index]) || 0;
