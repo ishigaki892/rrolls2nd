@@ -1377,8 +1377,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const superRr = Number(superR[index]) || 0;
     console.log(ultraFlag[index]);
     if (legend === 60 && ultra === 1000) kakuteinibaiflag.push("nibai");
-    else if (ultraFlag[index] !== 0) kakuteinibaiflag.push(ultraFlag[index]);
-    else kakuteinibaiflag.push("");
+    else  kakuteinibaiflag.push(ultraFlag[index]);
     gatyaData[newId] = {
       lr: 10000 - legend,
       ur: 10000 - legend - ultra,
@@ -1402,7 +1401,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const option = document.createElement("option");
     if (kakuteinibaiflag[index] === "nibai") flagname = "[2倍]";
-    else if (kakuteinibaiflag[index] !== "nibai" || kakuteinibaiflag[index] !== "") flagname = "[確定]";
+    else if (kakuteinibaiflag[index] !== "nibai" && kakuteinibaiflag[index] !== 0) flagname = "[確定]";
     else flagname = "";
     option.value = newId;
     option.dataset.dataG = ultraFlag[index];
