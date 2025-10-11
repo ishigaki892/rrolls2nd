@@ -814,16 +814,25 @@ changemain.addEventListener("click", () => {
 
 addsub.addEventListener("click", () => {
   let nowgt = url.searchParams.get("gt");
-  let inputkakut, inputaddf;
-  inputkakut = `g${guranteed.value}`;
-  inputaddf = `a${addfutureuber.value}`;
+  let inputkakut = `g${guranteed.value}`;
+  let inputaddf = `a${addfutureuber.value}`;
+
   if (inputkakut === "g0") inputkakut = "";
   if (inputaddf === "a0") inputaddf = "";
-  const inputGatya = nowgt + "s" + gacha.value + inputkakut + inputaddf;
-  url.searchParams.set("gt", inputGatya);
-  location.href = url;
 
-})
+  const selectedOption = gacha.options[gacha.selectedIndex];
+  const dataG = selectedOption?.dataset.G || "";
+
+  let inputGatya = gacha.value + inputkakut + inputaddf;
+  if (String(dataG) === "1") {
+    inputGatya += "g11";
+  }
+
+  const newGt = nowgt + "s" + inputGatya;
+  url.searchParams.set("gt", newGt);
+  location.href = url;
+});
+
 
 seedupdate.addEventListener("click", () => {
   const seed = seedSelect.value;
