@@ -1648,19 +1648,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   nextds.innerHTML = `伝説枠:${nds}... 昇格伝説枠:${uds}...<br>追加伝説枠(0.7%):${uuds}`
 
   delsub.addEventListener("click", () => {
+    const gtsa = gts.includes("s") ? gts.split("s")[0] : gts;
     const inputNumber = url.searchParams.get("seed");
-    let inputkakut = guranteed.value === "0" ? "" : `g${guranteed.value}`;
-
-    const selectedOption = gacha.options[gacha.selectedIndex];
-    const dataG = selectedOption?.dataset.G || "";
-    let inputGatya = gacha.value + inputkakut;
-
-    if (String(dataG) === "1") {
-      inputGatya += "g11";
-    }
-
     url.searchParams.set("seed", inputNumber);
-    url.searchParams.set("gt", inputGatya);
+    url.searchParams.set("gt", gtsa);
     location.href = url;
   });
 
