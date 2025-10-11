@@ -787,18 +787,30 @@ function setstyle(s1,aread,bread,areadStyles,breadStyles,namesa,namesb,results) 
 changemain.addEventListener("click", () => { 
   const inputNumber = url.searchParams.get("seed"); 
   let inputkakut = `g${guranteed.value}`; 
-  let inputaddf = `a${addfutureuber.value}`;
+  let inputaddf = `a${addfutureuber.value}`; 
+
   if (inputkakut === "g0") inputkakut = ""; 
   if (inputaddf === "a0") inputaddf = ""; 
-  const inputGatya = gacha.value + inputkakut + inputaddf; 
+
+  const selectedOption = gacha.options[gacha.selectedIndex];
+  const dataG = selectedOption?.dataset.G || "";
+
+  let inputGatya = gacha.value + inputkakut + inputaddf;
+
+  if (String(dataG) === "1") {
+    inputGatya += "g11";
+  }
+
   const gts = url.searchParams.get("gt") || ""; 
   const parts = gts.split("s"); 
   parts[0] = inputGatya; 
   const newGt = parts.join("s");
+
   url.searchParams.set("seed", inputNumber); 
   url.searchParams.set("gt", newGt); 
   location.href = url; 
 });
+
 
 addsub.addEventListener("click", () => {
   let nowgt = url.searchParams.get("gt");
@@ -1378,12 +1390,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ultra = Number(ultraR[index]) || 0;
     const superRr = Number(superR[index]) || 0;
 
-    // kakuteinibaiflag 判定
     let kakuflag;
     if (legend === 60 && ultra === 1000) kakuflag = "nibai";
     else kakuflag = ultraFlag[index];
 
-    // gatyaData 登録
     gatyaData[newId] = {
       lr: 10000 - legend,
       ur: 10000 - legend - ultra,
@@ -1391,8 +1401,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       gt: `gt${gachaId}`,
       name: gatyaData[gachaId] ? gatyaData[gachaId].name : title[index]
     };
-
-    // option 作成
     const baseItem = gatyaData[gachaId];
     const name1 = baseItem ? baseItem.name : gatyaData[newId].name;
 
