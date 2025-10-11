@@ -1366,15 +1366,24 @@ function getaddtext() {
 document.addEventListener("DOMContentLoaded", async () => {
   await loadTSV();
   gtdataget()
+  const seriesSelect = document.getElementById("series");
+  const optGroup = document.createElement("optgroup");
+  optGroup.label = "スケジュール内ガチャ";
+
   id.forEach((gachaId, index) => {
+    if (!gachaId) return;
 
     const newId = `bc${gachaId}`;
-
     const legend = Number(legendR[index]) || 0;
-    const ultra  = Number(ultraR[index]) || 0;
+    const ultra = Number(ultraR[index]) || 0;
     const superRr = Number(superR[index]) || 0;
-    if (legend === 60 && ultra === 1000) kakuteinibaiflag.push("nibai");
-    else  kakuteinibaiflag.push(ultraFlag[index]);
+
+    // kakuteinibaiflag 判定
+    let kakuflag;
+    if (legend === 60 && ultra === 1000) kakuflag = "nibai";
+    else kakuflag = ultraFlag[index];
+
+    // gatyaData 登録
     gatyaData[newId] = {
       lr: 10000 - legend,
       ur: 10000 - legend - ultra,
@@ -1382,34 +1391,25 @@ document.addEventListener("DOMContentLoaded", async () => {
       gt: `gt${gachaId}`,
       name: gatyaData[gachaId] ? gatyaData[gachaId].name : title[index]
     };
-  });
-  const seriesSelect = document.getElementById("series");
-  const optGroup = document.createElement("optgroup");
-  optGroup.label = "スケジュール内ガチャ";
 
-  id.forEach((gachaId, index) => {
-    let flagname;
-    if (!gachaId) return;
-    const newId = `bc${gachaId}`;
-    const item = gatyaData[newId];
-    if (!item) return;
+    // option 作成
     const baseItem = gatyaData[gachaId];
-    const name1 = baseItem ? baseItem.name : item.name;
+    const name1 = baseItem ? baseItem.name : gatyaData[newId].name;
+
+    let flagname = "";
+    if (kakuflag === "nibai") flagname = "[2倍]";
+    else if (String(kakuflag) === "1") flagname = "[確定]";
 
     const option = document.createElement("option");
-    if (kakuteinibaiflag[index] === "nibai") {
-      flagname = "[2倍]";
-    } else if (String(kakuteinibaiflag[index]) === "1") {
-      flagname = "[確定]";
-    } else {
-      flagname = "";
-    }
     option.value = newId;
     option.dataset.G = ultraFlag[index];
     option.textContent = `${startday[index]} ~ ${endday[index]}  ${name1} (${gachaId}) ${flagname}`;
 
     optGroup.appendChild(option);
   });
+
+  seriesSelect.appendChild(optGroup);
+
 
   if (seriesSelect.firstChild) {
     seriesSelect.insertBefore(optGroup, seriesSelect.firstChild);
